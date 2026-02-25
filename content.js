@@ -81,7 +81,7 @@
         toast.textContent = message;
         Object.assign(toast.style, {
             position: "fixed",
-            bottom: "20px",
+            top: "20px",
             right: "20px",
             padding: "12px 24px",
             backgroundColor: "#1e293b",
