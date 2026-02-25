@@ -88,7 +88,7 @@
             backgroundColor: "#1e293b",
             color: "#f8fafc",
             borderRadius: "8px",
-            borderLeft: `6px solid ${pickedColor}`,
+            borderLeft: `16px solid ${pickedColor}`,
             boxShadow: "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1)",
             fontFamily: "system-ui, -apple-system, sans-serif",
             fontSize: "15px",
