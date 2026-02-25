@@ -10,9 +10,6 @@
         const result = await eyeDropper.open();
         const hexColor = result.sRGBHex; // #RRGGBB 形式で取得される
 
-        // 色選択直後のマウス位置を取得
-        const mousePos = await getMousePosition();
-
         // ユーザーが設定しているフォーマットを取得
         chrome.storage.sync.get({ format: 'hex' }, (items) => {
             // ホワイトリスト検証
@@ -28,7 +25,7 @@
 
             // クリップボードにコピー
             navigator.clipboard.writeText(finalColor).then(() => {
-                showToast(`✔ Copied: ${finalColor}`, hexColor, mousePos);
+                showToast(`✔ Copied: ${finalColor}`, hexColor);
             }).catch(err => {
                 console.error("Clipboard copy failed:", err);
                 alert(`色のコピーに失敗しました。\n取得した色: ${finalColor}`);
@@ -38,22 +35,6 @@
     } catch (e) {
         // ユーザーがピッカーの起動をキャンセルした場合（Escキーを押すなど）
         console.log("EyeDropper canceled or error:", e);
-    }
-
-    // --- マウス位置を取得する関数 ---
-    function getMousePosition() {
-        return new Promise((resolve) => {
-            const handler = (e) => {
-                document.removeEventListener('mousemove', handler);
-                resolve({ x: e.clientX, y: e.clientY });
-            };
-            document.addEventListener('mousemove', handler);
-            // フォールバック：マウスが動かなかった場合は右上に表示
-            setTimeout(() => {
-                document.removeEventListener('mousemove', handler);
-                resolve(null);
-            }, 100);
-        });
     }
 
     // --- 変換用ヘルパー関数群 ---
@@ -90,7 +71,7 @@
     }
 
     // --- 画面上にコピー完了のトースト通知を出す関数 ---
-    function showToast(message, pickedColor, mousePos) {
+    function showToast(message, pickedColor) {
         // 既存のトーストがあれば削除
         const existing = document.getElementById("ccp-toast");
         if (existing) existing.remove();
@@ -98,15 +79,10 @@
         const toast = document.createElement("div");
         toast.id = "ccp-toast";
         toast.textContent = message;
-
-        // マウス位置がある場合はその近くに、なければ右上に表示
-        const posStyle = mousePos
-            ? { top: `${mousePos.y + 20}px`, left: `${mousePos.x + 20}px` }
-            : { top: "20px", right: "20px" };
-
         Object.assign(toast.style, {
             position: "fixed",
-            ...posStyle,
+            top: "20px",
+            right: "20px",
             padding: "12px 24px",
             paddingLeft: "20px",
             backgroundColor: "#1e293b",
