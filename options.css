@@ -1,0 +1,104 @@
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #f1f5f9;
+  color: #0f172a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  margin: 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 24px 38px 3px rgba(0,0,0,0.05);
+  padding: 32px;
+  max-width: 400px;
+  width: 100%;
+}
+
+h1 {
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: #0f172a;
+}
+
+p {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.radio-label:hover {
+  border-color: #cbd5e1;
+  background-color: #f8fafc;
+}
+
+/* 擬似クラス:hasを使ってチェック時の親のスタイルを変える */
+.radio-label:has(input:checked) {
+  border-color: #3b82f6;
+  background-color: #eff6ff;
+}
+
+input[type="radio"] {
+  accent-color: #3b82f6;
+  width: 20px;
+  height: 20px;
+  margin: 0 16px 0 0;
+  cursor: pointer;
+}
+
+.radio-text {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.radio-label:has(input:checked) .radio-text {
+  color: #1d4ed8;
+}
+
+.status-container {
+  margin-top: 24px;
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.status {
+  font-size: 14px;
+  color: #10b981;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status.show {
+  opacity: 1;
+  transform: translateY(0);
+}

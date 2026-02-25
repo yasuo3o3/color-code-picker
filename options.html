@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Color Code Picker Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🎨 Color Format Settings</h1>
+    <p>コピーされるカラーコードの形式を選択してください。</p>
+
+    <div class="options">
+      <label class="radio-label">
+        <input type="radio" name="format" value="hex" checked>
+        <span class="radio-text">HEX (例: #FFFFFF)</span>
+      </label>
+
+      <label class="radio-label">
+        <input type="radio" name="format" value="rgb">
+        <span class="radio-text">RGB (例: rgb(255, 255, 255))</span>
+      </label>
+
+      <label class="radio-label">
+        <input type="radio" name="format" value="hsl">
+        <span class="radio-text">HSL (例: hsl(0, 0%, 100%))</span>
+      </label>
+    </div>
+
+    <div class="status-container">
+      <span id="status" class="status"></span>
+    </div>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{
+    "manifest_version": 3,
+    "name": "Color Code Picker",
+    "version": "1.0",
+    "description": "Pick colors using Chrome's EyeDropper API and copy them in your preferred format (HEX, RGB, HSL).",
+    "action": {
+        "default_title": "Pick a color"
+    },
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "storage"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "options_ui": {
+        "page": "options.html",
+        "open_in_tab": false
+    },
+    "commands": {
+        "pick-color": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+E",
+                "mac": "Command+Shift+E"
+            },
+            "description": "Pick a color on the current page"
+        }
+    }
+}
