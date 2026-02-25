@@ -25,7 +25,7 @@
 
             // クリップボードにコピー
             navigator.clipboard.writeText(finalColor).then(() => {
-                showToast(`✔ Copied: ${finalColor}`);
+                showToast(`✔ Copied: ${finalColor}`, hexColor);
             }).catch(err => {
                 console.error("Clipboard copy failed:", err);
                 alert(`色のコピーに失敗しました。\n取得した色: ${finalColor}`);
@@ -71,7 +71,7 @@
     }
 
     // --- 画面上にコピー完了のトースト通知を出す関数 ---
-    function showToast(message) {
+    function showToast(message, pickedColor) {
         // 既存のトーストがあれば削除
         const existing = document.getElementById("ccp-toast");
         if (existing) existing.remove();
@@ -84,9 +84,11 @@
             top: "20px",
             right: "20px",
             padding: "12px 24px",
+            paddingLeft: "20px",
             backgroundColor: "#1e293b",
             color: "#f8fafc",
             borderRadius: "8px",
+            borderLeft: `6px solid ${pickedColor}`,
             boxShadow: "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1)",
             fontFamily: "system-ui, -apple-system, sans-serif",
             fontSize: "15px",
