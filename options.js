@@ -31,7 +31,10 @@ function saveOptions() {
 function restoreOptions() {
     // デフォルトは "hex"
     chrome.storage.sync.get({ format: 'hex' }, (items) => {
-        const radio = document.querySelector(`input[value="${items.format}"]`);
+        // ホワイトリスト検証（セレクタインジェクション対策）
+        const validFormats = ['hex', 'rgb', 'hsl'];
+        const format = validFormats.includes(items.format) ? items.format : 'hex';
+        const radio = document.querySelector(`input[value="${format}"]`);
         if (radio) {
             radio.checked = true;
         }

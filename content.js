@@ -12,7 +12,9 @@
 
         // ユーザーが設定しているフォーマットを取得
         chrome.storage.sync.get({ format: 'hex' }, (items) => {
-            const format = items.format;
+            // ホワイトリスト検証
+            const validFormats = ['hex', 'rgb', 'hsl'];
+            const format = validFormats.includes(items.format) ? items.format : 'hex';
             let finalColor = hexColor;
 
             if (format === 'rgb') {
