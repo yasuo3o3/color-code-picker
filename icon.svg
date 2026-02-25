@@ -1,8 +1,39 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
-  <rect width="128" height="128" rx="28" fill="#1e293b"/>
-  <circle cx="46" cy="46" r="14" fill="#ef4444"/>
-  <circle cx="82" cy="46" r="14" fill="#3b82f6"/>
-  <circle cx="46" cy="82" r="14" fill="#10b981"/>
-  <circle cx="82" cy="82" r="14" fill="#f59e0b"/>
-  <rect x="56" y="56" width="16" height="16" rx="4" fill="#ffffff"/>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="glass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.05" />
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="130%" height="130%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="128" height="128" rx="28" fill="url(#bg)" />
+
+  <!-- Colorful Palette Ring -->
+  <path d="M 64 24 A 40 40 0 0 1 104 64 A 40 40 0 0 1 64 104 A 40 40 0 0 1 24 64 A 40 40 0 0 1 64 24" 
+        fill="none" stroke="#ef4444" stroke-width="12" stroke-linecap="round" />
+  <path d="M 104 64 A 40 40 0 0 1 64 104" fill="none" stroke="#f59e0b" stroke-width="12" stroke-linecap="round" />
+  <path d="M 64 104 A 40 40 0 0 1 24 64" fill="none" stroke="#10b981" stroke-width="12" stroke-linecap="round" />
+  <path d="M 24 64 A 40 40 0 0 1 64 24" fill="none" stroke="#3b82f6" stroke-width="12" stroke-linecap="round" />
+
+  <!-- Loupe / Magnifying Glass Handle -->
+  <line x1="78" y1="78" x2="100" y2="100" stroke="#94a3b8" stroke-width="14" stroke-linecap="round" filter="url(#shadow)" />
+  <line x1="84" y1="84" x2="98" y2="98" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round" />
+
+  <!-- Loupe Lens Frame -->
+  <circle cx="64" cy="64" r="22" fill="url(#glass)" stroke="#cbd5e1" stroke-width="6" filter="url(#shadow)"/>
+  
+  <!-- Loupe Inner Highlight (Crosshair) -->
+  <line x1="64" y1="54" x2="64" y2="74" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.8" />
+  <line x1="54" y1="64" x2="74" y2="64" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.8" />
+  
+  <!-- Lens Flare / Reflection -->
+  <path d="M 50 50 A 18 18 0 0 1 74 54" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
 </svg>
